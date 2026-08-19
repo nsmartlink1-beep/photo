@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NDEGE SMART PROFESIONAL DETAILS - Professional Portfolio</title>
+    <style>
+        /* --- Bright & Modern Color Palette --- */
+        :root {
+            --bg-main: #f0f9ff; /* Very pale azure */
+            --bg-card: #ffffff;
+            
+            --text-heading: #0f5151; /* Deep Teal */
+            --text-body: #334155;   /* Slate Grey */
+            
+            --accent-teal: #14b8a6;  /* Vibrant Teal */
+            --accent-orange: #f97316; /* Vibrant Orange */
+            
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(100, 116, 139, 0.1), 0 2px 4px -1px rgba(100, 116, 139, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-body);
+            /* Bright gradient background */
+            background: linear-gradient(135deg, #f6f9fc 0%, #e0f2fe 100%);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+        /* --- Header (Clean & Bright) --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            color: var(--text-heading);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.03em;
+            background: linear-gradient(to right, var(--accent-teal), var(--accent-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-body);
+            font-weight: 500;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- Navigation (Sticky, Clean) --- */
+        nav {
+            background-color: var(--bg-card);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 10px;
+        }
+
+        nav a {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-heading);
+            border: 2px solid transparent;
+        }
+
+        nav a:hover {
+            background-color: #e0f2fe;
+            border-color: var(--accent-teal);
+            color: var(--accent-teal);
+        }
+
+        /* --- Main Content Layout --- */
+        main {
+            max-width: 1200px;
+            margin: 0 auto 4rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        section {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        section h2::before {
+            content: '';
+            width: 6px;
+            height: 30px;
+            background-color: var(--accent-orange);
+            margin-right: 15px;
+            border-radius: 3px;
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            max-width: 1000px;
+        }
+
+        /* --- Modern Grid for Skills & Services --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background-color: var(--bg-main);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+            /* Accent border at the top of card */
+            border-top: 5px solid var(--accent-teal); 
+            display: flex;
+            flex-direction: column;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px -10px rgba(20, 184, 166, 0.3);
+            border-top-color: var(--accent-orange);
+        }
+
+        .skill-card h3 {
+            font-size: 1.4rem;
+            color: var(--text-heading);
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-card > p {
+            color: var(--text-body);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1; /* Ensures buttons align at bottom */
+        }
+
+        .skills-list {
+            list-style: none;
+            margin-top: auto;
+        }
+
+        .skills-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-body);
+        }
+
+        .skills-list li::before {
+            content: "✔";
+            color: var(--accent-teal);
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        /* --- Styled Buttons (Replaced broken forms) --- */
+        .card-btn {
+            display: inline-block;
+            background-color: var(--accent-teal);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .card-btn:hover {
+            background-color: var(--text-heading);
+            transform: scale(1.02);
+        }
+
+        /* --- Contact Section --- */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            padding: 1.5rem;
+            background: var(--bg-main);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-item strong {
+            display: block;
+            color: var(--text-heading);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--text-heading);
+            color: #cfd8dc;
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            margin-top: auto;
+            font-size: 0.95rem;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 768px) {
+            header { padding: 2rem 1rem; }
+            header h1 { font-size: 2rem; }
+            nav { padding: 0.5rem; }
+            nav ul { gap: 0; }
+            nav a { padding: 0.5rem 1rem; font-size: 0.9rem; width: 100%; text-align: center;}
+            main { padding: 0 1rem; }
+            section { padding: 1.5rem; }
+        }
+    </style>
+<img src="profile.jpg" alt="ALEX PICTURE"></head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>NDEGE DOUGLAS</h1>
+        <p>Educator | Science Specialist | Tech & Digital Media Strategist | Content Creator</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Core Expertise</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main>
+
+        <!-- About Me Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p class="bio-text">
+                I am a professional, qualified teacher holding a Bachelor's degree from Kisii University, specializing in <strong>Biology and Chemistry</strong>. Combining a strong academic foundation in scientific instruction with a high aptitude for modern technology, I bridge the gap between educational excellence and digital innovation.
+            </p>
+            <p class="bio-text">
+                Beyond classroom teaching, I excel as a versatile technology practitioner. My expertise spans graphic design, custom web design and building, and online activity management. I serve as a dedicated Virtual Assistant and Social Media Manager, handling dynamic online platforms—including active digital channels for clients such as TikTok accounts and commercial properties like Preston Resort.
+            </p>
+        </section>
+
+        <!-- Core Expertise Section -->
+        <section id="skills">
+            <h2>Core Skills & Specializations</h2>
+            <div class="skills-grid">
+                
+                <div class="skill-card">
+                    <h3>Science Education</h3>
+                    <p>Qualified secondary educator proficient in curriculum delivery, laboratory practicals, and student engagement.</p>
+                    <ul class="skills-list">
+                        <li>Biology Instruction</li>
+                        <li>Chemistry Instruction & Practicals</li>
+                        <li>Pedagogical Adaptations</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Graphic & Web Design</h3>
+                    <p>Creative visual content creation and responsive web development tailored for brand strategy and presentation.</p>
+                    <ul class="skills-list">
+                        <li>Brand Identity & Graphic Design</li>
+                        <li>HTML & CSS Web Building</li>
+                        <li>UI/UX Design Concepts</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Digital & Social Media</h3>
+                    <p>Strategic management of online presence, content scheduling, audience growth, and virtual assistance.</p>
+                    <ul class="skills-list">
+                        <li>Social Media Strategy (TikTok, FB, IG)</li>
+                        <li>Digital Brand Assistant</li>
+                        <li>Online Communications & Analytics</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Services & Management Section -->
+        <section id="services">
+            <h2>Professional Experience</h2>
+            <p class="bio-text" style="margin-bottom: 2rem;">
+                Whether delivering rigorous scientific coursework or managing online digital operations, I focus on delivering high-quality, impactful results.
+            </p>
+            <div class="skills-grid">
+                <!-- Service Card 1 -->
+                <div class="skill-card">
+                    <h3>Educational Services</h3>
+                    <p>Subject teaching in Biology and Chemistry, academic mentoring, and scientific model/demonstration setup.</p>
+                    <!-- Fixed button linking -->
+                    <a href="https://esomake.co.ke/secondary/biology/form-1/" class="card-btn" target="_blank">Open Resource</a>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="skill-card">
+                    <h3>Web & Brand Development</h3>
+                    <p>Creating clean, modern websites and graphic design collateral (posters, banners, 3D logos) for businesses.</p>
+                    <!-- Update href with your actual portfolio link -->
+                    <a href="#" class="card-btn">View Portfolio</a>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="skill-card">
+                    <h3>Virtual Assistance</h3>
+                    <p>Comprehensive administrative and social media support for resort branding, customer engagements, and content curation.</p>
+                    <a href="#" class="card-btn">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <p class="bio-text">Interested in collaboration, educational instruction, or digital media management services? Feel free to reach out:</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>Location</strong>
+                    Gekomu / Kisii, Kenya <br>
+                    <a href="tel:0754605426">Call: 0754605426</a>
+                </div>
+
+                <div class="contact-item">
+                    <strong>Primary Specialization</strong>
+                    Biology & Chemistry Educator <br>Digital Strategist
+                </div>
+                <div class="contact-item">
+                    <strong>Social Media Management</strong>
+                    TikTok & Corporate Brand Accounts <br>(e.g., Preston Resort)
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2026 Douglas Ndege Maina. All Rights Reserved.</p>
+        <p>Eagerly Waiting To Work With You</p>
+    <p>Eagerly Call Ndege Smart Your Better Option</p>
+    </footer>
+
+</body>
+</html>
